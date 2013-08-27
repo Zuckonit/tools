@@ -81,10 +81,10 @@ On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
 function _encolor() {
-    eval color=\$$1
-    shift
-    local content=$@
-    echo -e "$color$@\E[0m"
-    unset color
-    unset content
+    if [ $# -ge 2 ]; then
+        eval color=\$$1
+        shift 1
+        echo -e "$color$@\e[0m"
+        unset color
+    fi
 }
